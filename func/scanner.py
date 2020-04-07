@@ -22,9 +22,9 @@ def validate_columns(columns_all):
             if item in unique_column_names.keys():
                 has_issues = True
                 if item in issues["repeated 'title' column entry"].keys():
+                    if item not in issues["repeated 'title' column entry"].keys():
+                        issues["repeated 'title' column entry"][item].append(unique_column_names[item])
                     issues["repeated 'title' column entry"][item].append(family)
-                else:
-                    issues["repeated 'title' column entry"][item] = [family]
             else:
                 unique_column_names[item] = family
 
