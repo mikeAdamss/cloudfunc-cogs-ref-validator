@@ -14,7 +14,7 @@ def validate_columns(columns_all):
     """
     unique_column_names = {}
 
-    issues = {"repeated 'name' column entry": {},
+    issues = {"repeated 'title' column entry": {},
               "the 'name' column entry is incorrectly formatted": {}}
 
 
@@ -22,13 +22,13 @@ def validate_columns(columns_all):
     for family, df in columns_all.items():
 
         # Checks against unique item names
-        for item in list(df["name"].unique()):
+        for item in list(df["title"].unique()):
             if item in unique_column_names.keys():
                 has_issues = True
-                if item in issues["repeated 'name' column entry"].keys():
-                    issues["repeated 'name' column entry"][item].append(family)
+                if item in issues["repeated 'title' column entry"].keys():
+                    issues["repeated 'title' column entry"][item].append(family)
                 else:
-                    issues["repeated 'name' column entry"][item] = [family]
+                    issues["repeated 'title' column entry"][item] = [family]
             else:
                 unique_column_names[item] = family
 
