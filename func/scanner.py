@@ -6,17 +6,13 @@ import requests
 import pandas as pd
 
 
-name_pattern = re.compile("^[a-z0-9_]*$")
-
 def validate_columns(columns_all):
     """
     Compares the contents of the family columns.csvs , looking for issues
     """
     unique_column_names = {}
 
-    issues = {"repeated 'title' column entry": {},
-              "the 'name' column entry is incorrectly formatted": {}}
-
+    issues = {"repeated 'title' column entry": {}}
 
     has_issues = False
     for family, df in columns_all.items():
@@ -31,9 +27,6 @@ def validate_columns(columns_all):
                     issues["repeated 'title' column entry"][item] = [family]
             else:
                 unique_column_names[item] = family
-
-            if not name_pattern.match(item):
-                issues["the 'name' column entry is incorrectly formatted"][item] = [family]
 
     if has_issues:
         return issues
