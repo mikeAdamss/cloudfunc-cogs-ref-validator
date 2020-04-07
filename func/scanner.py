@@ -8,7 +8,7 @@ import pandas as pd
 
 name_pattern = re.compile("^[a-z0-9_]*$")
 
-def validate_columns(colums_all):
+def validate_columns(columns_all):
     """
     Compares the contents of the family columns.csvs , looking for issues
     """
